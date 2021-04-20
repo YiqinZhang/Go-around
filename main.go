@@ -2,6 +2,7 @@ package main
 
 import (
 	elastic "gopkg.in/olivere/elastic.v3"
+	"strings"
 
 	"encoding/json"
 	"fmt"
@@ -167,8 +168,9 @@ func handlerSearch(w http.ResponseWriter, r *http.Request) {
 		p := item.(Post) // p = (Post) item
 		fmt.Printf("Post by %s: %s at lat %v and lon %v\n", p.User, p.Message, p.Location.Lat, p.Location.Lon)
 		// TODO(student homework): Perform filtering based on keywords such as web spam etc.
-		ps = append(ps, p)
-
+		if !containsFilteredWords(&p.Message) {
+			ps = append(ps, p)
+		}
 	}
 	js, err := json.Marshal(ps)
 	if err != nil {
@@ -180,4 +182,18 @@ func handlerSearch(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Write(js)
 }
+
+func containsFilteredWords(s *string) bool {
+	filteredWords := []string{
+		"fuck",
+		"100",
+	}
+	for _, word := range filteredWords {
+		if strings.Contains(*s, word) {
+			return true
+		}
+	}
+	return false
+}
+
 
