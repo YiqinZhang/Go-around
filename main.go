@@ -4,7 +4,7 @@ import (
 	"context"
 	elastic "gopkg.in/olivere/elastic.v3"
 	"strings"
-
+	"cloud.google.com/go/bigtable"
 	"encoding/json"
 	"fmt"
 	"github.com/pborman/uuid"
@@ -12,9 +12,6 @@ import (
 	"net/http"
 	"reflect"
 	"strconv"
-	"context"
-	"cloud.google.com/go/bigtable"
-
 )
 
 type Location struct {
@@ -37,7 +34,7 @@ const (
 	PROJECT_ID = "around-xxx"
 	BT_INSTANCE = "around-post"
 	// Needs to update this URL if you deploy it to cloud.
-	ES_URL = "http://35.192.126.24:9200"
+	ES_URL = "http://34.121.180.41:9200"
 )
 
 func main() {
