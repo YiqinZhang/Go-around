@@ -1,1 +1,1 @@
-### Google cloud based social network backend
+### Google cloud based social network backend using ElasticSearch (GCE)
