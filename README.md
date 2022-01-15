@@ -16,4 +16,4 @@ Aggregated the data at the post level and user level to improve the keyword-base
 
 ### Architecture
 
-<p align="center"><img src="pictures/web-architecture.png" alt="Project Architecture"></p>
+<p align="center"><img src="img/web-architecture.png" alt="Project Architecture"></p>
